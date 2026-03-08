@@ -12,3 +12,8 @@ Working at a studio as an engineer is pretty cool. Your customers are (usually) 
 While studios use web and cloud technology, there's also a lot of interesting challenges in graphics. Feature animation is the culmination of a host of artistic disciplines, and most of those disciplines face tough technical challenges. It's one of the few places that a software engineer could make a career out of writing software to create explosions without being part of the defense industry.
 
 Software in animation can be very performance sensitive; the common wisdom is that the more iterations an artist can get in on a unit of work in a set amount of time, the better chance they have of finding the right creative choice. Key to those iterations is fast, responsive software; DreamWorks famously wrote Premo and OpenMoonray to accelerate animation and rendering, respectively. 
+
+If you want to read a bit about my specific adventures, check out the series where I talk about a few different positions I held in the animation industry, and projects I felt like talking about.
+
+- [[TD Life Pt 1]]
+- [[TD Life Pt 2]]
