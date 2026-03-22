@@ -17,3 +17,5 @@ If you want to read a bit about my specific adventures, check out the series whe
 
 - [[TD Life Pt 1]]
 - [[TD Life Pt 2]]
+
+- [[Research & Development at Studios]]
