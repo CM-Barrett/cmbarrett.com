@@ -15,7 +15,7 @@ Needless to say, this is a bit scary from a cybersecurity perspective.  There ar
 
 On the more worrying side, similar incidents were reported by most other frontier AI labs. [During an Anthropic evaluation](https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals), their model attemted to evade restricted network access by concatenating the URL it was using, created self-deleting scripts to escalate their privileges to accomplish a task, and coordinated to bypass monitoring and human refusals.  
 ## Paperclip Maximization
-The [paperclip maximizer]() is a famous thought experiment by philosopher [Nick Bostrom](https://nickbostrom.com/ethics/ai), examining one of the risks of AI in the area of *alignment*.  To quote Mr. Bostrom:
+The [paperclip maximizer](https://www.huffingtonpost.com/2014/08/22/artificial-intelligence-oxford_n_5689858.html) is a famous thought experiment by philosopher [Nick Bostrom](https://nickbostrom.com/ethics/ai), examining one of the risks of AI in the area of *alignment*.  To quote Mr. Bostrom:
 
 > Suppose we have an AI whose only goal is to make as many paper clips as possible. The AI will realize quickly that it would be much better if there were no humans because humans might decide to switch it off. Because if humans do so, there would be fewer paper clips. Also, human bodies contain a lot of atoms that could be made into paper clips. The future that the AI would be trying to gear towards would be one in which there were a lot of paper clips but no humans.
 
