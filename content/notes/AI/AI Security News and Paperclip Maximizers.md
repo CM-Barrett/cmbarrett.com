@@ -5,7 +5,7 @@ For the purposes of this article, I'm going to set aside the question of whether
 ## A summary of the Hugging Face incident
 [In July 2026, an OpenAI frontier model undergoing evaluation broke out of a sandbox](https://labs.cloudsecurityalliance.org/research/csa-research-note-openai-model-sandbox-escape-huggingface-br/) that, among other things, was intended to prevent it from accessing the internet. The objective the model was given was to pass a benchmark test called ExploitGym, and the model concluded that the way to do that was to access the internet and extract the results from Hugging Face, which provides model hosting, benchmarks, and tools for the AI industry.
 
-[According to the reports by OpenAI](https://openai.com/index/hugging-face-model-evaluation-security-incident/), this was an unexpected degree of "agency" that the model undertook; rather than solving ExploitGym on its own, it concluded it needed internet access to achieve its objective. It discovered a new zero-day vulnerability, used it to gain access to the internet, and then stole credentials and used those to attack Hugging Face. 
+[According to the reports by OpenAI](https://openai.com/index/hugging-face-model-evaluation-security-incident/), this was an unexpected degree of "agency" that the model undertook; rather than solving ExploitGym on its own, it concluded it needed internet access to achieve its objective. It discovered a new zero-day vulnerability, used it to gain access to the internet, and then stole credentials to setup a foothold on multiple third-party services, and used those to attack Hugging Face. 
 
 Needless to say, this is a bit scary from a cybersecurity perspective.  There are a few redeeming factors that give me some hope:
 
@@ -13,6 +13,7 @@ Needless to say, this is a bit scary from a cybersecurity perspective.  There ar
 - Second, the model wasn't air gapped. I'll get into it a bit below, but I believe sandboxes are insufficient for security when evaluating models for unaligned behavior. A model on a machine without actual access to the outside internet would likely not be able to have done this sort of hack.
 - Third, Hugging Face was able to fend off the attack by leveraging an open weight model to monitor and address incoming anomalous traffic. This means that despite the advanced cyber capabilites of unreleased frontier models, they are not *yet* so advanced that they can't be countered.
 
+On the more worrying side, similar incidents were reported by most other frontier AI labs. [During an Anthropic evaluation](https://www.anthropic.com/news/investigating-incidents-cybersecurity-evals), their model attemted to evade restricted network access by concatenating the URL it was using, created self-deleting scripts to escalate their privileges to accomplish a task, and coordinated to bypass monitoring and human refusals.  
 ## Paperclip Maximization
 The [paperclip maximizer]() is a famous thought experiment by philosopher [Nick Bostrom](https://nickbostrom.com/ethics/ai), examining one of the risks of AI in the area of *alignment*.  To quote Mr. Bostrom:
 
@@ -50,7 +51,7 @@ I don't believe a pause is plausible at this time, which makes it more important
 ## What's worth trying?
 I doubt anything I write here will be news to AI companies, but it might be useful if you're generating an agentic system that uses frontier models. 
 
-Here's my take: sandboxes are (probably) necessary but insufficient with current model capabilities. We're at the point where more is required, including air gapping machines when testing cyber capabilities. At a minimum, there probably should be a few "levels" of testing for a new model: begin with air-gapped environments, followed by air-gapped environments that emulate internet access to see if the system attempts to break containment. 
+Here's my take: sandboxes are (probably) necessary but insufficient with current model capabilities. We're at the point where more is required, up to and including air gapping machines when testing cyber capabilities. Test new models in air-gapped environments that emulate internet access to see if the system attempts to break containment. Once you have confidence in the model, you can test in other security scenarious, such as running in VMs managed by a hardware-enforced hypervisor. This is especially critical when testing a model's offensive cyber capabilities. 
 
 To maximize safety, all actions taken by an AI system must be logged and analyzed, both automatically and by humans. Special attention should be paid to network traffic. Manual analysis of every single run probably isn't possible, so there should be a mix of always manually reviewing actions when testing a model's ability to "break out of the box", and some percentage of other runs should be randomly sampled. 
 
